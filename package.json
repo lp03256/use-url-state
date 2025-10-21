@@ -20,7 +20,8 @@
     "build": "node esbuild.config.js",
     "test": "vitest run",
     "dev": "vitest watch",
-    "size": "node -e \"const fs=require('fs');const gzip=require('zlib').gzipSync;const esm=fs.readFileSync('./dist/index.js');const cjs=fs.readFileSync('./dist/index.cjs');console.log('ESM:',esm.length,'bytes,',gzip(esm).length,'gzipped');console.log('CJS:',cjs.length,'bytes,',gzip(cjs).length,'gzipped');\""
+    "size": "node -e \"const fs=require('fs');const gzip=require('zlib').gzipSync;const esm=fs.readFileSync('./dist/index.js');const cjs=fs.readFileSync('./dist/index.cjs');console.log('ESM:',esm.length,'bytes,',gzip(esm).length,'gzipped');console.log('CJS:',cjs.length,'bytes,',gzip(cjs).length,'gzipped');\"",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "react",
