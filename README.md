@@ -1,10 +1,10 @@
-# use-url-state
+# react-url-state-hook
 
 > Tiny, dependency-free React hook that syncs state with URL query params
 
-[![npm version](https://img.shields.io/npm/v/use-url-state.svg)](https://www.npmjs.com/package/use-url-state)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/use-url-state.svg)](https://bundlephobia.com/package/use-url-state)
-[![license](https://img.shields.io/npm/l/use-url-state.svg)](https://github.com/yourusername/use-url-state/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/react-url-state-hook.svg)](https://www.npmjs.com/package/react-url-state-hook)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/react-url-state-hook.svg)](https://bundlephobia.com/package/react-url-state-hook)
+[![license](https://img.shields.io/npm/l/react-url-state-hook.svg)](https://github.com/lp03256/use-url-state/blob/main/LICENSE)
 
 ## Features
 
@@ -21,7 +21,7 @@
 ## Installation
 
 ```bash
-npm install use-url-state
+npm install react-url-state-hook
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ npm install use-url-state
 ### Basic Example
 
 ```jsx
-import { useUrlState } from 'use-url-state'
+import { useUrlState } from 'react-url-state-hook'
 
 function SearchPage() {
   const [filters, setFilters] = useUrlState({
