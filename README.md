@@ -246,4 +246,4 @@ Issues and PRs welcome! Please ensure tests pass before submitting.
 
 ---
 
-Made with by [Lalit Patil](https://github.com/lp03256)
+Made by [Lalit Patil](https://github.com/lp03256/use-url-state)
