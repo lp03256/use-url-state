@@ -1,7 +1,7 @@
 {
   "name": "react-url-state-hook",
   "version": "0.1.0",
-  "description": "Tiny, dependency-free React hook that syncs state with URL query params",
+  "description": "Tiny, dependency-free React hook to sync component state with URL search params and query strings",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -27,13 +27,21 @@
     "react",
     "hook",
     "url",
-    "query",
+    "url search params",
+    "query string",
+    "query params",
     "state",
     "sync",
-    "router",
-    "history"
+    "persist state",
+    "filters",
+    "useSearchParams",
+    "react router",
+    "next.js"
   ],
-  "author": "lp03256",
+  "author": {
+    "name": "Lalit Patil",
+    "url": "https://github.com/lp03256"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

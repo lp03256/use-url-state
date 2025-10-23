@@ -1,10 +1,19 @@
-# react-url-state-hook
+# React URL State Hook – Sync React State with Query Parameters
 
-> Tiny, dependency-free React hook that syncs state with URL query params
+> Tiny, dependency-free React hook for synchronizing component state with URL search params and query strings.
+
+Keep filters, pagination, and shareable URLs in sync across React Router, Next.js, Remix, and any custom router without adding heavyweight dependencies.
 
 [![npm version](https://img.shields.io/npm/v/react-url-state-hook.svg)](https://www.npmjs.com/package/react-url-state-hook)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/react-url-state-hook.svg)](https://bundlephobia.com/package/react-url-state-hook)
 [![license](https://img.shields.io/npm/l/react-url-state-hook.svg)](https://github.com/lp03256/use-url-state/blob/main/LICENSE)
+
+## Use Cases
+
+- Persist search filters and sort order between refreshes or page changes
+- Generate shareable URLs for dashboards and internal tooling
+- Replace `useSearchParams` with a more ergonomic API that handles nested objects
+- Keep query string state aligned across tabs, back button navigation, and SSR
 
 ## Features
 
@@ -54,6 +63,45 @@ function SearchPage() {
 ```
 
 The URL automatically syncs: `/?query=react&page=2&sort=asc`
+
+### Next.js App Router Example
+
+```jsx
+'use client'
+import { usePathname } from 'next/navigation'
+import { useUrlState } from 'react-url-state-hook'
+
+export default function ProductsPage() {
+  const pathname = usePathname()
+  const [filters, setFilters] = useUrlState(
+    { q: '', category: 'all' },
+    {
+      basePath: pathname,
+      history: 'replace'
+    }
+  )
+
+  return (
+    <section>
+      <input
+        value={filters.q}
+        placeholder="Search products"
+        onChange={(event) => setFilters({ q: event.target.value })}
+      />
+      <select
+        value={filters.category}
+        onChange={(event) => setFilters({ category: event.target.value })}
+      >
+        <option value="all">All</option>
+        <option value="new">New</option>
+        <option value="sale">On Sale</option>
+      </select>
+    </section>
+  )
+}
+```
+
+Passing `basePath` from `usePathname()` keeps the hook aligned with the page segment while still letting the URL query string stay in sync.
 
 ### Nested Objects & Arrays
 
@@ -230,11 +278,19 @@ Requires the History API (all modern browsers). For legacy browsers, consider po
 
 ## Works With
 
-- Plain React apps
-- React Router v6+
-- Next.js (client components)
-- Remix
+- Plain React apps and legacy codebases
+- React Router v6+ (routes, loaders, search params)
+- Next.js (Pages Router or App Router client components)
+- Remix and other server frameworks with universal routing
 - Any routing library (doesn't rely on routing APIs)
+
+## FAQ
+
+**How is this different from `useSearchParams` or `nuqs`?**  
+`useUrlState` manages nested objects, arrays, debounce, and history modes out of the box, making it easier to persist complex UI state without manually parsing strings.
+
+**Does it work without React Router?**  
+Yes. The hook only depends on the browser History API, so it works in vanilla React apps, single-file embeds, and custom routers.
 
 ## License
 
